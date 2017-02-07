@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hello World CoffeeShop</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="fonts/font.css" rel='stylesheet' type='text/css'>
+    <link  href="fonts/fonts.css" rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/creative.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" ng-app="CoffeeApp" ng-controller="loginCtrl">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Hello World CoffeeShop</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#coffees">Coffees</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">Services</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#map">Map</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                    <li>
+                        <img class="img-responsive img-circle" src="{{g_image}}"/>
+                    </li>
+                    <li>
+                        <img class="img-responsive img-circle" src="{{fb_image}}"/>
+                    </li>
+                    <li>
+                        <!--Google-->
+                         <div class="dropdown">
+                            <a type="button" data-toggle="dropdown">
+                                <b>{{gmail.username}}<br>{{gmail.email}}</b>
+                            <span class="{{caret}}"></span></a>
+                            <ul class="dropdown-menu">
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Setting</a></li>
+                            <li class="divider"></li>
+                            <li><a ng-click="logout()">Logout</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <!--Facebook-->
+                        <div class="dropdown">
+                            <a type="button" data-toggle="dropdown">
+                                <b>{{facebook.username}}<br>{{facebook.email}}</b>
+                            <span class="{{caret1}}"></span></a>
+                            <ul class="dropdown-menu">
+                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">Setting</a></li>
+                            <li class="divider"></li>
+                            <li><a ng-click="logout()">Logout</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1 id="homeHeading">COFFEE THE MOST IMPORTANT MEAL OF THE DAY</h1>
+                <hr>
+                <p><b style="color: yellowgreen">$</b>(<b style="color:orangered">'#coffee'</b>).<b style="color: yellowgreen">make</b>({
+                        <b style="color: lightskyblue">creamer</b> <b style="color: orangered">'milk'</b>,
+                        <b style="color: lightskyblue">sweetener:</b> <b style="color: orangered">'sugar'</b>
+                    })<b style="color: yellowgreen">.wakeup</b>();
+                </p>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">< About ></a>
+            </div>
+        </div>
+    </header>
+
+    <div ng-view></div>
+
+    <aside class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>Free Download at Start Bootstrap!</h2>
+                <a href="http://startbootstrap.com/template-overviews/creative/" class="btn btn-default btn-xl sr-button">Download Now!</a>
+            </div>
+        </div>
+    </aside>
+
+    <div ng-include="'/views/include/footer.html'"></div>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="/vendor/jquery/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/creative.min.js"></script>
+
+    <!-- AngularJS -->
+    <script src="/vendor/angularjs/angular.min.js"></script>
+    <script src="/vendor/angularjs/angular-resource.js"></script>
+    <script src="/vendor/angularjs/angular-route.min.js"></script>
+    <script src="/js/controllers/app.js"></script>
+    <script src="/js/services/service.js"></script>
+    <script src="/js/controllers/coffeeCtrl.js"></script>
+    <script src="/js/controllers/loginCtrl.js"></script>
+
+    <!--Login Google Facebook-->
+    <script src="/js/login.js"></script>
+
+    <script type="text/javascript">
+        (function(){
+            var p = document.createElement('script');
+            p.type = 'text/javascript';
+            p.async = true;
+            p.src = 'https://apis.google.com/js/client.js?onload=onLoadFunction';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(p, s);
+        })();
+    </script>
+</body>
+
+</html>
