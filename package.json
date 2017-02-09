@@ -4,6 +4,7 @@
   "description": "[Creative](http://startbootstrap.com/template-overviews/creative/) is a one page creative theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/).",
   "main": "gulpfile.js",
   "dependencies": {
+    "body-parser": "^1.16.0",
     "bower": "*",
     "ejs": "^2.5.2",
     "express": "^4.14.0",

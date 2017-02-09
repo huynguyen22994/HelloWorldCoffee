@@ -17,7 +17,7 @@
 		</div>
 	</div>
 </div>
-<div class="row">
+<div class="row" ng-controller="CoffeeAdminCtrl">
 	<div class="col-xs-12">
 		<div class="box">
 			<div class="box-header">
@@ -47,36 +47,19 @@
 							<th>Price</th>
 							<th>Age</th>
 							<th>Discribe</th>
-							<th>Country of Citizenship</th>
+							<th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#addCoffee" >Add Coffee</button></th>
 						</tr>
 					</thead>
-					<tbody ng-controller="CoffeeAdminCtrl">
+					<tbody>
 						<!-- Start list -->
 						<tr ng-repeat="coffee in coffees">
 							<td>{{coffee._id}}</td>
-							<td><img class="img-rounded" src="{{coffee.img}}" alt=""><i>{{coffee.name}}</i></td>
+							<td><img class="img-rounded" src="{{coffee.img}}" alt=""><br><i>{{coffee.name}}</i></td>
 							<td>{{coffee.price}}</td>
 							<td>74</td>
 							<td>{{coffee.discribe}}</td>
-							<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Edit</button><button class="btn btn-danger">Delete</button></td>
-							<!--Modal-->
-								<div class="modal fade" id="myModal" role="dialog">
-									<div class="modal-dialog modal-lg">
-									<div class="modal-content">
-										<div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title">Modal Header</h4>
-										</div>
-										<div class="modal-body">
-										<p>This is a large modal.</p>
-										</div>
-										<div class="modal-footer">
-										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										</div>
-									</div>
-									</div>
-								</div>
-						<!--Modal-->
+							<td><button type="button" class="btn btn-primary" ng-click="detailAdmin(coffee._id)" data-toggle="modal" data-target="#modalDetail">Edit</button>
+							<button class="btn btn-danger" ng-click="deleteCoffee(coffee._id)">Delete</button></td>
 						</tr>
 						<!-- End list -->
 					</tbody>
@@ -87,13 +70,78 @@
 							<th>Price</th>
 							<th>Age</th>
 							<th>Discribe</th>
-							<th>Country of Citizenship</th>
+							<th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#addCoffee" >Add Coffee</button></th>
 						</tr>
 					</tfoot>
 				</table>
 			</div>
 		</div>
 	</div>
+<!-- Modal detailCoffee -->
+	<div class="modal fade" id="modalDetail" role="dialog">
+		<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title"><b>Edit Coffee Detail</b></h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-2">
+						<img src="{{oneCoffee.img}}" style=" width: 250px; height: 200px"/>
+					</div>
+
+					<div class="col-md-6 col-md-offset-2 text-center" ng-hide="{{popup}}">
+						<img src="/img/loading/loading.gif" style=" width: 200px; height: 200px" />
+					</div>
+
+					<div class="col-md-6 col-md-offset-2" ng-show="{{popup}}">
+						<p class="h4"><b>Name: </b>
+							<input type="text" class="form-control" ng-model="oneCoffee.name" />
+						</p>						
+						<p class="h4"><b>Price: </b>
+							<input type="text" class="form-control" ng-model="oneCoffee.price" />
+						</p>
+						<p class="h4"><b>Discribe: </b>
+							<input type="text" class="form-control" ng-model="oneCoffee.discribe" />
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+			<button type="button" class="btn btn-primary" ng-click="updateCoffee(oneCoffee._id)" data-dismiss="modal">Save</button>
+			<button type="button" class="btn btn-danger" ng-click="clear()" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+		</div>
+	</div>
+<!--Modal-->
+<!-- Modal AddCoffee -->
+  <div class="modal fade" id="addCoffee" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add New Coffee</h4>
+        </div>
+        <div class="modal-body">
+		  <div class="h4">Coffee Name:</div>
+		  <input type="text" class="form-control" ng-model="newCoffee.name" />
+		  <div class="h4">Coffee Price:</div>
+		  <input type="number" class="form-control" ng-model="newCoffee.price" />
+		  <div class="h4">Image:</div>
+		  <input type="file" class="btn btn-info" ng-model="newCoffee.img" />
+		  <div class="h4">Discribe:</div>
+		  <input type="text" class="form-control" ng-model="newCoffee.discribe" />
+        </div>
+        <div class="modal-footer">
+		  <button type="button" class="btn btn-primary" ng-click="addCoffee()" data-dismiss="modal">Add</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--Modal-->
 </div>
 <div class="row">
 	<div class="col-xs-12">
