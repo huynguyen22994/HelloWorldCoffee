@@ -5,18 +5,18 @@
     });
 });*/
 
-app.controller('coffeeCtrl', function($scope, Coffee){
+app.controller('coffeeCtrl', function($scope, HelloWorld){
     $scope.show = true;
     $scope.popup = true;
     refresh = function(){
-        var coffees = Coffee.query(function(){
+        var coffees = HelloWorld.Coffees().query(function(){
             $scope.coffees = coffees;
             $scope.show = false;
         });
     }
     refresh()
     $scope.detail = function(coffeeid){
-        $scope.oneCoffee = Coffee.get({id: coffeeid});
+        $scope.oneCoffee = HelloWorld.Coffees().get({id: coffeeid});
         $scope.popup = false;
     };
 

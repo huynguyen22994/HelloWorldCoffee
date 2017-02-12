@@ -1,4 +1,4 @@
-var app = angular.module("CoffeeAdminApp", ["ngRoute", "ngResource"]);
+var app = angular.module("CoffeeAdminApp", ["ngRoute", "ngResource", "ngFileUpload"]);
 
     app.config(['$routeProvider', '$locationProvider', function AppConfig($routeProvider, $locationProvider) {
         $routeProvider

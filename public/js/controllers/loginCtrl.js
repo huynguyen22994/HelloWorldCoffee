@@ -1,4 +1,4 @@
-app.controller('loginCtrl', ['$scope', function($scope){
+app.controller('loginCtrl', ['$scope', 'HelloWorld', function($scope, HelloWorld){
     var online = false;
     $scope.caret = "";
     $scope.caret1 = "";
@@ -26,6 +26,7 @@ app.controller('loginCtrl', ['$scope', function($scope){
                                     $scope.g_image = resp.image.url;   
                                     online = true;   
                                     $scope.caret = 'caret';
+                                    addCustomer(HelloWorld.Customers(), $scope.gmail.username, $scope.gmail.email, $scope.g_image)
                                 });
                             });
                         }
@@ -71,6 +72,7 @@ app.controller('loginCtrl', ['$scope', function($scope){
                             $scope.fb_image = response.picture.data.url;
                             online = true;   
                             $scope.caret1 = 'caret';
+                            addCustomer(HelloWorld.Customers(), $scope.facebook.username, $scope.facebook.email, $scope.fb_image)
                         });
                     });
                 } else {
@@ -84,4 +86,18 @@ app.controller('loginCtrl', ['$scope', function($scope){
             alert('Moi ban dang xuat');
         }
     }
+
+    var addCustomer = function(Customer, name, email, img){
+         $scope.addCustomer = {
+                name: '',
+                email: '',
+                img: ''
+            };
+            $scope.addCustomer.name = name;
+            $scope.addCustomer.email = email;
+            $scope.addCustomer.img = img;
+            Customer.save($scope.addCustomer, function(){
+            alert('addCustomer success');
+        });
+    };
 }]);

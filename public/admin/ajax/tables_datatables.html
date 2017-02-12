@@ -55,7 +55,7 @@
 						<tr ng-repeat="coffee in coffees">
 							<td>{{coffee._id}}</td>
 							<td><img class="img-rounded" src="{{coffee.img}}" alt=""><br><i>{{coffee.name}}</i></td>
-							<td>{{coffee.price}}</td>
+							<td>{{coffee.price}} VND</td>
 							<td>74</td>
 							<td>{{coffee.discribe}}</td>
 							<td><button type="button" class="btn btn-primary" ng-click="detailAdmin(coffee._id)" data-toggle="modal" data-target="#modalDetail">Edit</button>
@@ -130,9 +130,22 @@
 		  <div class="h4">Coffee Price:</div>
 		  <input type="number" class="form-control" ng-model="newCoffee.price" />
 		  <div class="h4">Image:</div>
-		  <input type="file" class="btn btn-info" ng-model="newCoffee.img" />
+		  <!-- Drop Image -->
+			<div class="button btn-danger" ngf-select ng-model="file" ngf-multiple="false">Select Image</div>
+			<div ngf-drop ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"  accept="image/*,application/pdf" 
+			ngf-pattern="'image/*'">Drop images here or click to upload</div>
+			<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+				Image :
+				<ul>
+					<li><img src="{{linkImg}}" style="width: 30px; height: 30px"/></li>
+					<li ng-repeat="f in files" style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>	
+				</ul>
+					<b>{{process}}%</b>
+				<pre><img src="/img/loading/process.jpg" width="{{process}}%" height="10px" /></pre>
+					<!--{{log}}-->
+			<!-- Drop Image -->
 		  <div class="h4">Discribe:</div>
-		  <input type="text" class="form-control" ng-model="newCoffee.discribe" />
+		  <textarea type="text" class="form-control" ng-model="newCoffee.discribe" ></textarea>
         </div>
         <div class="modal-footer">
 		  <button type="button" class="btn btn-primary" ng-click="addCoffee()" data-dismiss="modal">Add</button>
