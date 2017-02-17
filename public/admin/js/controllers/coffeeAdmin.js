@@ -76,7 +76,7 @@ app.controller('CoffeeAdminCtrl', function($scope, CoffeeAdmin, Upload, $timeout
               var file = files[i];
               if (!file.$error) {
                 Upload.upload({
-                    url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
+                    url: '/coffees',
                     data: {
                       username: $scope.username,
                       file: file  
@@ -86,12 +86,14 @@ app.controller('CoffeeAdminCtrl', function($scope, CoffeeAdmin, Upload, $timeout
                     $timeout(function() {
                         $scope.log = 'file: ' +
                         resp.config.data.file.name + ', Response: ' + JSON.stringify(resp.data) + '\n' + $scope.log;
+                        console.log(resp);
                     });
                 }, null, function (evt) {
                     var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
                     $scope.process = progressPercentage;
                     $scope.linkImg = "/img/coffees/" + evt.config.data.file.name;
                     $scope.log = 'progress: ' + progressPercentage + '% ' + evt.config.data.file.name + '\n' + $scope.log;
+                    console.log(evt.config.data.file);
                 });
               }
             }

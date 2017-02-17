@@ -3,6 +3,8 @@ var router = express.Router();
 var mongojs = require('mongojs');
 var db = mongojs('HelloWorldCoffeeDB', ['coffees']);
 var bodyParser = require('body-parser');
+var multer  = require('multer')
+var upload = multer({ dest: 'public/uploads/' })
 
 router.use(bodyParser.json());
 
@@ -32,7 +34,8 @@ router.put('/', function(req, res){
     });
 });
 
-router.post('/', function(req, res){
+router.post('/', upload.any(), function(req, res){
+    console.log(req.files);
     db.coffees.insert(req.body, function(err, docs){
         res.end(JSON.stringify(docs));
     });
