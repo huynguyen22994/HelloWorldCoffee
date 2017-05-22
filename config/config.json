@@ -1,0 +1,14 @@
+{
+    "database": {
+        "dbname": "HelloWorldCoffeeDB",
+        "username": "huynguyen",
+        "password": null,
+        "host": "localhost",
+        "dialect": "mysql",
+        "min": 0,
+        "max": 1000,
+        "idle": 10000
+    },
+    "port": 3000,
+    "storageCoffeePath": "./images/coffees/"
+}

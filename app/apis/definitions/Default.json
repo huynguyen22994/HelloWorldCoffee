@@ -1,0 +1,48 @@
+{
+    "definitions": {
+        "Coffee": {
+            "type": "object",
+            "properties": {
+                "coffeeId": {
+                "type": "integer",
+                "description": "Unique identifier representing a specific product for a given latitude & longitude. For example, uberX in San Francisco will have a different product_id than uberX in Los Angeles."
+                },
+                "name": {
+                "type": "string",
+                "description": "Name of Coffee."
+                },
+                "price": {
+                "type": "number",
+                "description": "Price of Coffee."
+                },
+                "originalImg": {
+                "type": "string",
+                "description": "Image Name of Coffee"
+                },
+                "linkImg": {
+                "type": "string",
+                "description": "link image of Coffee"
+                },
+                "discribe": {
+                "type": "string",
+                "description": "Discribe of Coffee"
+                }
+            }
+            },
+            "Error": {
+            "type": "object",
+            "properties": {
+                "code": {
+                "type": "integer",
+                "format": "int32"
+                },
+                "message": {
+                "type": "string"
+                },
+                "fields": {
+                "type": "string"
+                }
+            }
+        }
+    }
+}

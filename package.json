@@ -6,12 +6,17 @@
   "dependencies": {
     "body-parser": "^1.16.0",
     "bower": "*",
+    "crypto": "0.0.3",
     "ejs": "^2.5.2",
     "express": "^4.14.0",
+    "lodash": "^4.17.4",
     "mongojs": "^2.4.0",
     "multer": "^1.3.0",
+    "mysql": "^2.13.0",
     "ng-file-upload": "^12.2.13",
-    "nodemailer": "^3.0.2"
+    "nodemailer": "^3.0.2",
+    "sequelize": "^3.30.4",
+    "swagger-tools": "^0.10.1"
   },
   "devDependencies": {
     "bootstrap": "^3.3.7",

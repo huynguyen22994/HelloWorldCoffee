@@ -1,0 +1,57 @@
+{
+    "paths": {
+        "/coffees": {
+            "get": {
+                "summary": "Product Types",
+                "description": "This is test Apis Book",
+                "operationId": "getCoffees",
+                "responses": {
+                        "200": {
+                            "description": "template file",
+                            "schema": {
+                                "$ref": "#/definitions/Coffee"
+                            }
+                        },
+                        "default": {
+                            "description": "unexpected error",
+                            "schema": {
+                                "$ref": "#/definitions/Error"
+                            }
+                        }
+                    },
+                "x-swagger-router-controller": "DefaultCtrl"
+            },
+            "post": {
+                "summary": "create new coffee",
+                "description": "input a new coffee to insert CoffeeDB",
+                "operationId": "createCoffee",
+                 "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Coffee object that needs to be added to the CoffeeDB",
+                        "required": false,
+                        "schema": {
+                        "$ref": "#/definitions/Coffee"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "template file",
+                        "schema": {
+                            "$ref": "#/definitions/Coffee"
+                        }
+                    },
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/Error"
+                        }
+                    }
+                },
+                "x-swagger-router-controller": "DefaultCtrl"
+            }
+        }
+    }
+}

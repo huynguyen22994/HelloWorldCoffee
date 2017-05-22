@@ -1,0 +1,210 @@
+<div class="row" ng-init="initialization()">
+	<div id="breadcrumb" class="col-xs-12">
+		<a href="#" class="show-sidebar">
+			<i class="fa fa-bars"></i>
+		</a>
+		<ol class="breadcrumb pull-left">
+			<li><a href="#">Dashboard</a></li>
+			<li><a href="#">Tables</a></li>
+			<li><a href="#">Data Tables</a></li>
+		</ol>
+		<div id="social" class="pull-right">
+			<a href="#"><i class="fa fa-google-plus"></i></a>
+			<a href="#"><i class="fa fa-facebook"></i></a>
+			<a href="#"><i class="fa fa-twitter"></i></a>
+			<a href="#"><i class="fa fa-linkedin"></i></a>
+			<a href="#"><i class="fa fa-youtube"></i></a>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box">
+			<div class="box-header">
+				<div class="box-name">
+					<i class="fa fa-usd"></i>
+					<span>The World's billionaries</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+					<a class="expand-link">
+						<i class="fa fa-expand"></i>
+					</a>
+					<a class="close-link">
+						<i class="fa fa-times"></i>
+					</a>
+				</div>
+				<div class="no-move"></div>
+			</div>
+			<div class="box-content no-padding">
+				<table class="table table-bordered table-striped table-hover table-heading table-datatable" id="datatable-1">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Price</th>
+							<th>Age</th>
+							<th>Discribe</th>
+							<th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#addCoffee" >Add Coffee</button></th>
+						</tr>
+					</thead>
+					<tbody>
+						<!-- Start list -->
+						<tr ng-repeat="coffee in coffees">
+							<td>{{coffee._id}}</td>
+							<td><img class="img-rounded" src="{{coffee.img}}" alt=""><br><i>{{coffee.name}}</i></td>
+							<td>{{coffee.price}} VND</td>
+							<td>74</td>
+							<td>{{coffee.discribe}}</td>
+							<td><button type="button" class="btn btn-primary" ng-click="detailAdmin(coffee._id)" data-toggle="modal" data-target="#modalDetail">Edit</button>
+							<button class="btn btn-danger" ng-click="deleteCoffee(coffee._id)">Delete</button></td>
+						</tr>
+						<!-- End list -->
+					</tbody>
+					<tfoot>
+						<tr>
+							<th>ID</th>
+							<th>Name</th>
+							<th>Price</th>
+							<th>Age</th>
+							<th>Discribe</th>
+							<th><button type="button" class="btn btn-info" data-toggle="modal" data-target="#addCoffee" >Add Coffee</button></th>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</div>
+	</div>
+<!-- Modal detailCoffee -->
+	<div class="modal fade" id="modalDetail" role="dialog">
+		<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal">&times;</button>
+			<h4 class="modal-title"><b>Edit Coffee Detail</b></h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-md-2">
+						<img src="{{oneCoffee.img}}" style=" width: 250px; height: 200px"/>
+					</div>
+
+					<div class="col-md-6 col-md-offset-2 text-center" ng-hide="{{popup}}">
+						<img src="/img/loading/loading.gif" style=" width: 200px; height: 200px" />
+					</div>
+
+					<div class="col-md-6 col-md-offset-2" ng-show="{{popup}}">
+						<p class="h4"><b>Name: </b>
+							<input type="text" class="form-control" ng-model="oneCoffee.name" />
+						</p>						
+						<p class="h4"><b>Price: </b>
+							<input type="text" class="form-control" ng-model="oneCoffee.price" />
+						</p>
+						<p class="h4"><b>Discribe: </b>
+							<input type="text" class="form-control" ng-model="oneCoffee.discribe" />
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+			<button type="button" class="btn btn-primary" ng-click="updateCoffee(oneCoffee._id)" data-dismiss="modal">Save</button>
+			<button type="button" class="btn btn-danger" ng-click="clear()" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+		</div>
+	</div>
+<!--Modal-->
+<!-- Modal AddCoffee -->
+  <div class="modal fade" id="addCoffee" role="dialog">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add New Coffee</h4>
+        </div>
+        <div class="modal-body">
+        <div class="form-style-5">
+		  <input type="text" name="field1" placeholder="Coffee Name *"  ng-model="newCoffee.name" />
+		  <input type="text" name="field1" placeholder="Coffee Price *"  ng-model="newCoffee.price" />
+		  <label for="job">Interests:</label>
+			<select id="job" name="field4">
+			<optgroup label="Indoors">
+			<option value="fishkeeping">Fishkeeping</option>
+			<option value="reading">Reading</option>
+			<option value="boxing">Boxing</option>
+			<option value="debate">Debate</option>
+			<option value="gaming">Gaming</option>
+			<option value="snooker">Snooker</option>
+			<option value="other_indoor">Other</option>
+			</optgroup>
+			<optgroup label="Outdoors">
+			<option value="football">Football</option>
+			<option value="swimming">Swimming</option>
+			<option value="fishing">Fishing</option>
+			<option value="climbing">Climbing</option>
+			<option value="cycling">Cycling</option>
+			<option value="other_outdoor">Other</option>
+			</optgroup>
+			</select>   
+		  <label>Image:</label>
+		  <!-- Drop Image -->
+			<!--<div class="button btn-danger" ngf-select ng-model="file" ngf-multiple="false">Select Image</div>-->
+			<div ngf-drop ngf-select ng-model="files" class="drop-box" ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-allow-dir="true"  accept="image/*,application/pdf" 
+			ngf-pattern="'image/*'">Drop images here or click to upload</div>
+			<div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+			<button class="button btn-danger btn-sm" ng-disabled="!isImgName" ng-click="uploadImg()">upload</button>
+			<div ng-if="isImgName">
+				<p><i>Image :</i> <b ng-repeat="f in files" style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}</b></p>
+			</div>
+			<div ng-if="isUpload">
+				<div>
+					<img src="{{realImgLink}}" class="coffeeImg" />
+				</div>
+				<b>{{process}}%</b>
+				<pre><img src="/img/loading/process.jpg" width="{{process}}%" height="10px" /></pre>
+			</div>
+					<!--{{log}}-->
+			<!-- Drop Image -->
+		  <div class="h4">Discribe:</div>
+			<form name="ckeditor">
+				<textarea name="editor1" id="editor1" rows="10" cols="80" ng-model="newCoffee.discribe"></textarea>
+				<script>
+					// Replace the textarea id="editor1" with a CKEditor
+					// instance, using default configuration.
+					CKEDITOR.replace( 'editor1' );
+				</script>
+			</form>
+        </div>
+        <div class="modal-footer">
+		  <button type="button" class="btn btn-primary" ng-disabled="!canAdd" ng-click="createCoffee()" data-dismiss="modal">Add</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<!--Modal-->
+</div>
+
+<script type="text/javascript">
+// Run Datables plugin and create 3 variants of settings
+function AllTables(){
+	TestTable1();
+	TestTable2();
+	TestTable3();
+	LoadSelect2Script(MakeSelect2);
+}
+function MakeSelect2(){
+	$('select').select2();
+	$('.dataTables_filter').each(function(){
+		$(this).find('label input[type=text]').attr('placeholder', 'Search');
+	});
+}
+$(document).ready(function() {
+	// Load Datatables and run plugin on tables 
+	LoadDataTablesScripts(AllTables);
+	// Add Drag-n-Drop feature
+	WinMove();
+});
+</script>
